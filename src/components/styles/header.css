@@ -10,6 +10,10 @@
   font-size: 14px;
 }
 
+.qla-header > a {
+  align-self: baseline;
+}
+
 .qla-navigation {
   display: flex;
   list-style-type: none;
@@ -74,6 +78,7 @@
   height: 50px;
   justify-content: center;
   align-items: center;
+  margin-right: 5px;
 }
 
 .qla-profile img {

@@ -8,7 +8,7 @@ import {
   Magnifier,
   userAvatar,
 } from "../assets";
-import { useLocation, useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import "./styles/header.css";
 
 export default function Header() {
@@ -20,7 +20,9 @@ export default function Header() {
 
   return (
     <div className="qla-header">
-      <QuoraLogo />
+      <Link to="/">
+        <QuoraLogo />
+      </Link>
       <ul className="qla-navigation">
         <li
           onClick={() => handleClick("/")}
