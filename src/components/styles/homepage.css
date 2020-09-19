@@ -1,0 +1,37 @@
+.qla-homepage {
+  width: 75%;
+  background-color: white;
+  height: 1080px;
+  display: flex;
+  margin: auto;
+}
+
+.qla-left-sidebar {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  text-align: left;
+  font-size: 13px;
+  color: #636466;
+}
+
+.qla-left-sidebar li {
+  display: flex;
+  padding: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.qla-left-sidebar li:hover {
+  background-color: rgb(247, 241, 241);
+  cursor: pointer;
+}
+
+.qla-left-sidebar li img,
+.qla-left-sidebar li svg {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
