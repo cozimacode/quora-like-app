@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Notifications() {
-  return <div>Notifications</div>;
+  return <div style={{ textAlign: "center" }}>Notifications</div>;
 }

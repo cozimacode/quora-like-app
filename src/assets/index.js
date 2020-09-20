@@ -5,6 +5,7 @@ export { ReactComponent as Notifications } from "./navigation/notifications.svg"
 export { ReactComponent as QuoraLogo } from "./quora.svg";
 export { ReactComponent as Magnifier } from "./search/magnifier.svg";
 export { default as userAvatar } from "./user/naser.jpeg";
+export { default as yashodeep } from "./user/yashodeep.jpeg";
 export { default as chemistry } from "./spaces/chemistry.jpeg";
 export { default as computers } from "./spaces/computer-science.jpeg";
 export { default as coronavirus } from "./spaces/coronavirus.jpeg";
@@ -18,3 +19,4 @@ export { default as straightFromSource } from "./spaces/straight-from-the-source
 export { default as TIL } from "./spaces/til.jpeg";
 export { default as useBrain } from "./spaces/use-your-brain.jpeg";
 export { ReactComponent as DiscoverSpaces } from "./spaces/spaces.svg";
+export { ReactComponent as CloseButton } from "./homepage/close.svg";
