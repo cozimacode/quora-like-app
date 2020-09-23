@@ -1,0 +1,52 @@
+.qla-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  font-size: 14px;
+  z-index: 1;
+}
+
+.qla-header > a {
+  align-self: baseline;
+}
+
+/* Keeping these styles in this same file for now, will move them to separate files as the CSS rules grow in number like the others */
+
+.qla-profile {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
+}
+
+.qla-profile img {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+}
+
+.qla-add-question button {
+  color: white;
+  background-color: #b92b27;
+  padding: 5px 15px;
+  border-radius: 25px;
+  border: none;
+  outline: currentcolor none medium;
+}
+
+.qla-add-question button:hover {
+  background-color: rgb(155, 36, 32);
+  cursor: pointer;
+}
+
+.qla-add-question button:focus {
+  background-color: rgb(155, 36, 32);
+  box-shadow: rgba(46, 105, 255, 0.75) 0 0 0 2px;
+}

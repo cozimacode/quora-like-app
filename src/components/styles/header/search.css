@@ -1,0 +1,24 @@
+.qla-search {
+  display: flex;
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #dee0e1;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.qla-search:hover {
+  border: 1px solid rgb(8, 111, 245);
+}
+
+.qla-search input {
+  border: none;
+  outline: none;
+  width: 90%;
+}
+
+.qla-search input::placeholder {
+  color: rgb(117, 117, 117);
+}

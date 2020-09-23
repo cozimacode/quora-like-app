@@ -1,6 +1,7 @@
 import React from "react";
 import { Home, Answer, Spaces, Notifications } from "../../assets";
 import { useLocation, useHistory } from "react-router-dom";
+import "../styles/header/navigation.css";
 
 export default function Navigation() {
   let location = useLocation();

@@ -1,0 +1,42 @@
+.qla-questions-answers .qla-image {
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.qla-questions-answers .qla-image img {
+  width: 100%;
+}
+
+.qla-questions-answers .qla-image.image-zoomed img {
+  width: 70%;
+}
+
+.qla-questions-answers .qla-image.image-zoomed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  cursor: zoom-out;
+}
+
+.qla-questions-answers .qla-image svg {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}

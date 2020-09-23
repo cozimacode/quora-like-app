@@ -5,7 +5,7 @@ import Search from "./Search";
 import Profile from "./Profile";
 import AddQuestion from "./AddQuestion";
 import { Link } from "react-router-dom";
-import "../styles/header.css";
+import "../styles/header/header.css";
 
 export default function Header() {
   return (
