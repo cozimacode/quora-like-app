@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { CloseButton } from "../../assets";
+import "../styles/utilities/image.css";
 
 export default class Image extends PureComponent {
   constructor(props) {

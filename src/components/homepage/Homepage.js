@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LeftSidebar from "./LeftSidebar";
-import "../styles/homepage.css";
-import MainContent from "./MainContent";
+import MainContent from "./main-content/MainContent";
+import "../styles/homepage/homepage.css";
 
 export default class Homepage extends Component {
   render() {

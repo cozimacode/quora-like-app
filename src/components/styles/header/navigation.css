@@ -1,0 +1,32 @@
+.qla-navigation {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.qla-navigation li {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+}
+
+.qla-navigation .qla-active-tab {
+  border-bottom: 2px solid #b92b27;
+  color: #b92b27;
+}
+
+.qla-navigation .qla-active-tab .icon_svg-fill_as_stroke {
+  fill: rgb(185, 43, 39);
+}
+
+.qla-navigation li:hover,
+.qla-profile:hover {
+  background-color: rgb(247, 241, 241);
+  cursor: pointer;
+}
+
+.qla-navigation li svg,
+.qla-search svg {
+  margin-right: 5px;
+}

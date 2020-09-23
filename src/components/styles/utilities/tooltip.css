@@ -1,0 +1,30 @@
+.qla-tooltip {
+  position: relative;
+}
+
+.qla-tooltip .qla-tooltip-text {
+  max-width: 120px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  visibility: hidden;
+  padding: 10px !important;
+  background-color: rgb(63, 62, 62);
+  color: white;
+  border-radius: 3px !important;
+}
+
+.qla-tooltip:hover .qla-tooltip-text {
+  visibility: visible;
+}
+
+.qla-tooltip .qla-tooltip-text::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(63, 62, 62) transparent transparent transparent;
+}

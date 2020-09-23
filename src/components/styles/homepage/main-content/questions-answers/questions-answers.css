@@ -1,0 +1,84 @@
+.qla-questions-answers,
+.qla-content-hidden,
+.qla-answer-downvoted {
+  position: relative;
+  margin-top: 10px;
+}
+
+.qla-topic {
+  display: flex;
+  width: 100%;
+  font-size: 13px;
+  color: #939598;
+}
+
+.qla-topic button {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.qla-topic button:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.qla-poster {
+  display: flex;
+  margin: 10px 0;
+}
+
+.qla-poster img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  opacity: 1;
+}
+
+.qla-poster img:hover {
+  opacity: 0.8;
+}
+
+.qla-user-intro {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.qla-user-intro .qla-user-name {
+  color: #282829;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.qla-user-intro .qla-user-bio {
+  font-size: 13px;
+  color: #939598;
+}
+
+.qla-questions-answers .qla-question {
+  margin: 0;
+  font-weight: bold;
+}
+
+.qla-questions-answers .qla-excerpt span {
+  color: #195faa;
+}
+
+.qla-questions-answers .qla-excerpt span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.qla-questions-answers .qla-excerpt img {
+  cursor: pointer;
+}

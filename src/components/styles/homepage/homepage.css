@@ -1,0 +1,108 @@
+.qla-homepage {
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.qla-post-question,
+.qla-questions-answers,
+.qla-content-hidden,
+.qla-answer-downvoted {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  background-color: white;
+  border: 1px solid #dee0e1;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+}
+
+.qla-content-hidden,
+.qla-answer-downvoted {
+  position: relative;
+}
+
+.qla-content-hidden span,
+.qla-answer-downvoted span {
+  font-size: 15px;
+}
+
+.qla-answer-downvoted span:nth-child(2) {
+  display: block;
+  margin-top: 10px;
+  color: #636466;
+  font-size: 13px;
+}
+
+.qla-content-hidden ul,
+.qla-answer-downvoted ul {
+  width: 100%;
+  list-style-type: none;
+  border: 1px solid #bec0c4;
+  border-radius: 3px;
+  padding-left: 0;
+  margin-bottom: 0px;
+}
+
+.qla-content-hidden ul li,
+.qla-answer-downvoted ul li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 10px;
+  border-bottom: 1px solid #bec0c4;
+  color: #636466;
+}
+
+.qla-content-hidden .qla-undo-hide button,
+.qla-answer-downvoted .qla-undo-downvote button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  color: #636466;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: rgba(99, 100, 102, 0.2) 0px 0px 0px 1px inset;
+}
+
+.qla-content-hidden ul li:hover,
+.qla-answer-downvoted ul li:hover,
+.qla-content-hidden .qla-undo-hide button:hover,
+.qla-answer-downvoted .qla-undo-downvote button:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+}
+
+.qla-post-question:hover {
+  cursor: pointer;
+}
+
+.qla-logged-user {
+  display: flex;
+  justify-content: flex-start;
+  color: #939598;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.qla-logged-user img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 5px;
+  opacity: 1;
+}
+
+.qla-logged-user img:hover {
+  opacity: 0.8;
+}
+
+.qla-post-question span {
+  color: #939598;
+  font-size: 18px;
+  font-weight: bold;
+}

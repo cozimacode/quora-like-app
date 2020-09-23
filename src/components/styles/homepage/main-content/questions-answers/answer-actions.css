@@ -1,0 +1,53 @@
+.qla-questions-answers .qla-actions {
+  width: 100%;
+  display: flex;
+  margin: 10px 0 -10px 0;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.qla-questions-answers .qla-actions.full-answer {
+  position: sticky;
+  bottom: 0px;
+  background-color: white;
+  padding: 5px 0;
+}
+
+.qla-questions-answers .qla-actions .qla-action-set-one,
+.qla-questions-answers .qla-actions .qla-action-set-two {
+  display: flex;
+  justify-content: center;
+}
+
+.qla-questions-answers .qla-actions .qla-action-set-one span,
+.qla-questions-answers .qla-actions .qla-action-set-two span {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.qla-questions-answers .qla-actions .qla-action-set-one span {
+  border-radius: 25px;
+}
+
+.qla-upvote:hover,
+.qla-share:hover,
+.qla-comment:hover,
+.qla-downvote:hover,
+.qla-more-share:hover,
+.qla-options:hover,
+.qla-more-share.activated,
+.qla-options.activated {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.qla-questions-answers .qla-actions .qla-action-set-one span svg {
+  margin-right: 5px;
+}
+
+.qla-actions .qla-action-set-one .qla-upvote.upvoted svg g {
+  fill: rgb(46, 105, 255);
+}
