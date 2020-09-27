@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import {
   Upvote,
   Comment,
@@ -14,20 +14,28 @@ import Tooltip from "../../../utilities/Tooltip";
 import "../../../styles/homepage/main-content/questions-answers/answer-actions.css";
 
 export default function AnswerActions({ state, functions }) {
+  let [isSharingActive, setSharing] = useState(false);
+  let [isOptionsActive, setOptions] = useState(false);
+
   let {
     isExcerpt,
     userUpvoted,
     numOfUpvotes,
     numOfShares,
-    isSharingVisible,
-    isOptionsVisible,
+    numOfComments,
+    showComments,
   } = state;
-  let {
-    upvoteAnswer,
-    downvoteAnswer,
-    toggleOptions,
-    toggleSharing,
-  } = functions;
+
+  let { upvoteAnswer, downvoteAnswer, toggleComments } = functions;
+
+  const toggleSharing = useCallback(() => {
+    setSharing(!isSharingActive);
+  }, [setSharing, isSharingActive]);
+
+  const toggleOptions = useCallback(() => {
+    setOptions(!isOptionsActive);
+  }, [setOptions, isOptionsActive]);
+
   return (
     <div className={isExcerpt ? "qla-actions" : "qla-actions full-answer"}>
       <div className="qla-action-set-one">
@@ -49,8 +57,12 @@ export default function AnswerActions({ state, functions }) {
         </Tooltip>
 
         <Tooltip text="Comments" marginLeft="-47px">
-          <span className="qla-comment">
-            <Comment />5
+          <span
+            onClick={toggleComments}
+            className={showComments ? "qla-comment activated" : "qla-comment"}
+          >
+            <Comment />
+            {numOfComments}
           </span>
         </Tooltip>
       </div>
@@ -64,7 +76,7 @@ export default function AnswerActions({ state, functions }) {
         )}
 
         <Tooltip text="More sharing options" marginLeft="-37px">
-          {isSharingVisible && (
+          {isSharingActive && (
             <Menu
               width="150px"
               position={{ bottom: "79%", right: "-115%" }}
@@ -80,21 +92,20 @@ export default function AnswerActions({ state, functions }) {
                 "Copy Link",
                 "Embed Answer",
               ]}
+              toggle={toggleSharing}
             />
           )}
           <span
             onClick={toggleSharing}
-            tabIndex="0"
-            onBlur={toggleSharing}
             className={
-              isSharingVisible ? "qla-more-share activated" : "qla-more-share"
+              isSharingActive ? "qla-more-share activated" : "qla-more-share"
             }
           >
             <MoreSharing />
           </span>
         </Tooltip>
         <Tooltip text="More" marginLeft="-31px">
-          {isOptionsVisible && (
+          {isOptionsActive && (
             <Menu
               width="200px"
               position={{ bottom: "79%", right: "-173%" }}
@@ -108,14 +119,13 @@ export default function AnswerActions({ state, functions }) {
                 "Log",
                 "Report",
               ]}
+              toggle={toggleOptions}
             />
           )}
           <span
             onClick={toggleOptions}
-            tabIndex="1"
-            onBlur={toggleOptions}
             className={
-              isOptionsVisible ? "qla-options activated" : "qla-options"
+              isOptionsActive ? "qla-options activated" : "qla-options"
             }
           >
             <Options />

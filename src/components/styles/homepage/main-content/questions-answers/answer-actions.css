@@ -40,7 +40,8 @@
 .qla-more-share:hover,
 .qla-options:hover,
 .qla-more-share.activated,
-.qla-options.activated {
+.qla-options.activated,
+.qla-comment.activated {
   background-color: rgba(0, 0, 0, 0.03);
 }
 

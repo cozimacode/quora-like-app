@@ -12,6 +12,7 @@
   background-color: rgb(63, 62, 62);
   color: white;
   border-radius: 3px !important;
+  z-index: 2;
 }
 
 .qla-tooltip:hover .qla-tooltip-text {

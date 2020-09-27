@@ -1,4 +1,4 @@
-.qla-actions .qla-options-list {
+.qla-options-list {
   position: absolute;
   bottom: 79%;
   right: -173%;
@@ -10,7 +10,7 @@
   padding-left: 0;
 }
 
-.qla-actions .qla-options-list::after {
+.qla-options-list::after {
   content: " ";
   position: absolute;
   top: 100%;
@@ -22,11 +22,11 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.04);
 }
 
-.qla-actions .qla-options-list li {
+.qla-options-list li {
   padding: 10px;
 }
 
-.qla-actions .qla-options-list li:hover {
+.qla-options-list li:hover {
   background-color: rgba(0, 0, 0, 0.03);
   cursor: pointer;
 }

@@ -4,6 +4,7 @@ import Tooltip from "../../../utilities/Tooltip";
 import AnswerHidden from "./AnswerHidden";
 import AnswerDownvoted from "./AnswerDownvoted";
 import AnswerActions from "./AnswerActions";
+import CommentsSection from "./comments/CommentsSection";
 import "../../../styles/homepage/main-content/questions-answers/questions-answers.css";
 
 export default class QuestionsAndAnswers extends PureComponent {
@@ -12,12 +13,12 @@ export default class QuestionsAndAnswers extends PureComponent {
     this.state = {
       isExcerpt: true,
       isHidden: false,
-      isOptionsVisible: false,
-      isSharingVisible: false,
       userDownvoted: false,
       userUpvoted: false,
       numOfUpvotes: 0,
       numOfShares: 0,
+      numOfComments: 2,
+      showComments: false,
     };
   }
 
@@ -38,6 +39,12 @@ export default class QuestionsAndAnswers extends PureComponent {
     this.setState({
       isExcerpt: false,
     });
+  };
+
+  toggleComments = () => {
+    this.setState((state) => ({
+      showComments: !state.showComments,
+    }));
   };
 
   hideStory = () => {
@@ -76,22 +83,8 @@ export default class QuestionsAndAnswers extends PureComponent {
     }
   };
 
-  toggleOptions = () => {
-    this.setState((state) => ({
-      isOptionsVisible: !state.isOptionsVisible,
-      isSharingVisible: false,
-    }));
-  };
-
-  toggleSharing = () => {
-    this.setState((state) => ({
-      isSharingVisible: !state.isSharingVisible,
-      isOptionsVisible: false,
-    }));
-  };
-
   render() {
-    let { isExcerpt, isHidden, userDownvoted } = this.state;
+    let { isExcerpt, isHidden, userDownvoted, showComments } = this.state;
     let { data } = this.props;
     return (
       <>
@@ -106,48 +99,50 @@ export default class QuestionsAndAnswers extends PureComponent {
             userName={data.userName}
           />
         ) : (
-          <div className="qla-questions-answers">
-            <div className="qla-topic">
-              <span>Answer &middot; {data.topic}</span>
-              <button onClick={this.hideStory}>
-                <Tooltip text="Hide" marginLeft="-23px">
-                  <CloseButton />
-                </Tooltip>
-              </button>
-            </div>
-            <div className="qla-poster">
-              <img src={data.userAvatar} alt="user avatar" />
-              <div className="qla-user-intro">
-                <span className="qla-user-name">{data.userName}</span>
-                <span className="qla-user-bio">{data.userBio}</span>
+          <>
+            <div className="qla-questions-answers">
+              <div className="qla-topic">
+                <span>Answer &middot; {data.topic}</span>
+                <button onClick={this.hideStory}>
+                  <Tooltip text="Hide" marginLeft="-23px">
+                    <CloseButton />
+                  </Tooltip>
+                </button>
               </div>
-            </div>
-            <p className="qla-question">{data.question}</p>
-            {isExcerpt ? (
-              <div onClick={this.showFullPost} className="qla-excerpt">
-                <p>
-                  {data.answerExcerpt}
-                  <span onClick={this.showFullPost}>(more)</span>
-                </p>
-                <img
-                  className="qla-image"
-                  src={data.featuredImage}
-                  alt={data.featuredImageAlt}
-                />
+              <div className="qla-poster">
+                <img src={data.userAvatar} alt="user avatar" />
+                <div className="qla-user-intro">
+                  <span className="qla-user-name">{data.userName}</span>
+                  <span className="qla-user-bio">{data.userBio}</span>
+                </div>
               </div>
-            ) : (
-              <div className="qla-answer">{data.answerMarkup()}</div>
-            )}
-            <AnswerActions
-              state={this.state}
-              functions={{
-                upvoteAnswer: this.upvoteAnswer,
-                downvoteAnswer: this.downvoteAnswer,
-                toggleSharing: this.toggleSharing,
-                toggleOptions: this.toggleOptions,
-              }}
-            />
-          </div>
+              <p className="qla-question">{data.question}</p>
+              {isExcerpt ? (
+                <div onClick={this.showFullPost} className="qla-excerpt">
+                  <p>
+                    {data.answerExcerpt}
+                    <span onClick={this.showFullPost}>(more)</span>
+                  </p>
+                  <img
+                    className="qla-image"
+                    src={data.featuredImage}
+                    alt={data.featuredImageAlt}
+                  />
+                </div>
+              ) : (
+                <div className="qla-answer">{data.answerMarkup()}</div>
+              )}
+              <AnswerActions
+                state={this.state}
+                functions={{
+                  upvoteAnswer: this.upvoteAnswer,
+                  downvoteAnswer: this.downvoteAnswer,
+                  toggleComments: this.toggleComments,
+                }}
+              />
+            </div>
+            {showComments && <CommentsSection comments={data.comments} />}
+          </>
         )}
       </>
     );

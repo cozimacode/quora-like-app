@@ -1,0 +1,37 @@
+.qla-comment-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.qla-comment-actions .qla-action-set-one,
+.qla-comment-actions .qla-action-set-two {
+  display: flex;
+  justify-content: center;
+}
+
+.qla-comment-actions .qla-action-set-one span,
+.qla-comment-actions .qla-action-set-two span {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.qla-comment-actions .qla-action-set-one span {
+  border-radius: 25px;
+}
+
+.qla-comment-actions .qla-action-set-one span svg {
+  margin-right: 5px;
+}
+
+.qla-comment-actions .qla-action-set-one .qla-upvote.upvoted svg g,
+.qla-comment-actions .qla-action-set-two .qla-downvote.downvoted svg g {
+  fill: rgb(46, 105, 255);
+  stroke: rgb(46, 105, 255);
+}
