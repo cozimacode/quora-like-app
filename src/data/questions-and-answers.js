@@ -62,6 +62,26 @@ let sampleData = [
         </p>
       </>
     ),
+    comments: [
+      {
+        id: 1,
+        name: "Sachin Puri",
+        avatar:
+          "https://qphs.fs.quoracdn.net/main-thumb-61224897-100-bwsouhtzmmcalhbhjhfaycmflqaeqhdh.jpeg",
+        comment:
+          "I Bought the White Colour as the Wife wanted it.. My first choice too was the Aqua Teal, as it looks so good in Pictures..",
+        upvotes: 0,
+      },
+      {
+        id: 2,
+        name: "R.K. Sahai",
+        avatar:
+          "https://qphs.fs.quoracdn.net/main-thumb-1176069374-100-ojdxhwbivtumihfaazgtyycotkvhugxc.jpeg",
+        comment:
+          "Is it difficult to maintain / clean aqua teal colour car. I loved this colour and want to buy this colour but i have heard tht it gets dirty very soon and someone suggested me to go for white/silver colour as dust or scratch is more visible on aqua teal colour",
+        upvotes: 0,
+      },
+    ],
   },
   {
     id: 2,
@@ -125,6 +145,25 @@ let sampleData = [
         />
       </>
     ),
+    comments: [
+      {
+        id: 1,
+        name: "Ketaki Deshpande",
+        avatar:
+          "https://qphs.fs.quoracdn.net/main-thumb-518025178-100-rlhhgltxufomlmatskagisnututguvso.jpeg",
+        comment: "Wow prayash. U look better in the first picture though. 👍👌",
+        upvotes: 1,
+      },
+      {
+        id: 2,
+        name: "Viksit Thakur",
+        avatar:
+          "https://qphs.fs.quoracdn.net/main-thumb-163148040-200-ekoqzufcfjhntrwokuxizsxdftplwopx.jpeg",
+        comment:
+          "How one can do strength training with light dumbells? It would be great if you can bring more light towards these crucial points.",
+        upvotes: 0,
+      },
+    ],
   },
 ];
 

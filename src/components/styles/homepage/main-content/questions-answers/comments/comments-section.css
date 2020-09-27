@@ -1,0 +1,62 @@
+.qla-comments-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border: 1px solid #dee0e1;
+}
+
+.qla-comments-section .qla-add-comment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #f7f7f8;
+}
+
+.qla-comments-section .qla-add-comment img,
+.qla-comments-section .qla-commenter {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  opacity: 1;
+}
+
+.qla-comments-section .qla-add-comment img:hover,
+.qla-comments-section .qla-commenter:hover {
+  opacity: 0.8;
+}
+
+.qla-comments-section .qla-add-comment input {
+  padding: 8px 16px;
+  flex-grow: 1;
+  border: 1px solid #dee0e1;
+  border-radius: 25px;
+  font-size: 15px;
+  margin-right: 5px;
+  height: 40px;
+}
+
+.qla-comments-section .qla-add-comment input::placeholder {
+  color: rgb(147, 149, 152);
+}
+
+.qla-comments-section .qla-add-comment button {
+  border: none;
+  height: 30px;
+  background-color: #2e69ff;
+  opacity: 0.5;
+  padding: 7px 20px;
+  border-radius: 25px;
+  color: white;
+  transition: opacity ease-in-out 0.5s;
+}
+
+.qla-comments-section .qla-add-comment button.active {
+  opacity: 1;
+}
+
+.qla-comments-section .qla-add-comment button.active:hover {
+  cursor: pointer;
+}

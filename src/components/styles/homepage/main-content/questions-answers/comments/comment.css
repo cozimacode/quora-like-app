@@ -1,0 +1,20 @@
+.qla-single-comment {
+  display: flex;
+  padding: 16px 16px 0 16px;
+  background-color: white;
+  border-top: 1px solid #dee0e1;
+}
+
+.qla-single-comment .qla-comment-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  color: rgb(40, 40, 41);
+  width: 100%;
+}
+
+.qla-single-comment .qla-comment-details > span {
+  color: #282829;
+  font-weight: bold;
+  font-size: 13px;
+}

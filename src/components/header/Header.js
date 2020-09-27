@@ -3,7 +3,7 @@ import { QuoraLogo } from "../../assets";
 import Navigation from "./Navigation";
 import Search from "./Search";
 import Profile from "./Profile";
-import AddQuestion from "./AddQuestion";
+import AddQuestionButton from "./AddQuestionButton";
 import { Link } from "react-router-dom";
 import "../styles/header/header.css";
 
@@ -16,7 +16,7 @@ export default function Header() {
       <Navigation />
       <Search />
       <Profile />
-      <AddQuestion />
+      <AddQuestionButton />
     </div>
   );
 }

@@ -5,3 +5,17 @@
 .qla-content {
   margin-top: 60px;
 }
+
+.qla-overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  background-color: rgba(36, 36, 36, 0.9);
+  transition: opacity ease-in-out 0.3s;
+}
+
+.qla-overlay.active {
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+}

@@ -30,3 +30,5 @@ export { ReactComponent as Upvote } from "./homepage/upvote.svg";
 export { ReactComponent as Facebook } from "./homepage/facebook.svg";
 export { ReactComponent as Twitter } from "./homepage/twitter.svg";
 export { ReactComponent as RightArrow } from "./homepage/right-arrow.svg";
+export { ReactComponent as Link } from "./homepage/link.svg";
+export { ReactComponent as Reply } from "./homepage/reply.svg";
