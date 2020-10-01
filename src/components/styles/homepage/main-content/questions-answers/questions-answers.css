@@ -5,6 +5,11 @@
   margin-top: 10px;
 }
 
+.qla-questions-answers .qla-answer img,
+.qla-questions-answers .qla-excerpt .qla-image {
+  width: 100%;
+}
+
 .qla-topic {
   display: flex;
   width: 100%;

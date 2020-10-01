@@ -1,10 +1,15 @@
 import React from "react";
 import "../styles/utilities/tooltip.css";
 
-export default function Tooltip({ text, marginLeft, children }) {
+export default function Tooltip({
+  active = false,
+  text,
+  marginLeft,
+  children,
+}) {
   return (
     <div className="qla-tooltip">
-      {text && (
+      {!active && text && (
         <span className="qla-tooltip-text" style={{ marginLeft }}>
           {text}
         </span>

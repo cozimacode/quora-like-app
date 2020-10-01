@@ -1,27 +1,23 @@
-import React, { useCallback, useState } from "react";
+import React, { useState, useCallback } from "react";
 import {
-  Upvote,
-  Comment,
-  Share,
+  Follow,
+  Request,
   MoreSharing,
   Options,
-  Downvote,
   Facebook,
   Twitter,
 } from "../../../../assets";
 import Menu from "../../../utilities/Menu";
 import Tooltip from "../../../utilities/Tooltip";
-import "../../../styles/homepage/main-content/questions-answers/answer-actions.css";
+import "../../../styles/homepage/main-content/questions-answers/question-actions.css";
 
-export default function AnswerActions({ stats, state, functions }) {
+export default function QuestionActions({ state, functions }) {
   let [isSharingActive, setSharing] = useState(false);
   let [isOptionsActive, setOptions] = useState(false);
 
-  let { isExcerpt, userUpvoted, showComments } = state;
+  let { numOfFollows, userFollowed } = state;
 
-  let { numOfUpvotes, numOfShares, numOfComments } = stats;
-
-  let { upvoteAnswer, downvoteAnswer, toggleComments } = functions;
+  let { followQuestion } = functions;
 
   const toggleSharing = useCallback(() => {
     setSharing(!isSharingActive);
@@ -32,47 +28,26 @@ export default function AnswerActions({ stats, state, functions }) {
   }, [setOptions, isOptionsActive]);
 
   return (
-    <div className={isExcerpt ? "qla-actions" : "qla-actions full-answer"}>
+    <div className="qla-actions">
       <div className="qla-action-set-one">
-        <Tooltip text="Upvote" marginLeft="-35px">
-          <span
-            onClick={upvoteAnswer}
-            className={userUpvoted ? "qla-upvote upvoted" : "qla-upvote"}
-          >
-            <Upvote />
-            {numOfUpvotes}
-          </span>
-        </Tooltip>
+        <span
+          onClick={followQuestion}
+          className={userFollowed ? "qla-follow followed" : "qla-follow"}
+        >
+          <Follow />
+          Follow
+          {numOfFollows > 0 ? <> &middot; {numOfFollows}</> : null}
+        </span>
 
-        <Tooltip text="Share" marginLeft="-31px">
-          <span className="qla-share">
-            <Share />
-            {numOfShares}
-          </span>
-        </Tooltip>
-
-        <Tooltip text="Comments" marginLeft="-47px">
-          <span
-            onClick={toggleComments}
-            className={showComments ? "qla-comment activated" : "qla-comment"}
-          >
-            <Comment />
-            {numOfComments}
-          </span>
-        </Tooltip>
+        <span className="qla-request">
+          <Request />
+          Request
+        </span>
       </div>
       <div className="qla-action-set-two">
-        {!isExcerpt && (
-          <Tooltip text="Downvote" marginLeft="-45px">
-            <span onClick={downvoteAnswer} className="qla-downvote">
-              <Downvote />
-            </span>
-          </Tooltip>
-        )}
-
         <Tooltip
           active={isSharingActive}
-          text="More sharing options"
+          text="Sharing options"
           marginLeft="-37px"
         >
           {isSharingActive && (
@@ -89,7 +64,6 @@ export default function AnswerActions({ stats, state, functions }) {
                   Twitter
                 </span>,
                 "Copy Link",
-                "Embed Answer",
               ]}
               toggle={toggleSharing}
             />
@@ -109,13 +83,16 @@ export default function AnswerActions({ stats, state, functions }) {
               width="200px"
               position={{ bottom: "79%", right: "-173%" }}
               items={[
-                "Bookmark",
-                "Suggest Edits",
+                "Answer Anonymously",
+                "Answer Later",
+                "Follow Privately",
+                "Stop Edit Notifications",
+                "Edit Topics",
                 "Edit Question and Source",
-                "Thank",
-                "Downvote Answer",
                 "Downvote Question",
-                "Log",
+                "Merge Questions",
+                "View Stats and Log",
+                "Delete",
                 "Report",
               ]}
               toggle={toggleOptions}

@@ -4,10 +4,10 @@ import Menu from "../../../../utilities/Menu";
 import Tooltip from "../../../../utilities/Tooltip";
 import "../../../../styles/homepage/main-content/questions-answers/comments/comment-actions.css";
 
-export default function CommentActions({ state, functions }) {
+export default function CommentActions({ state, functions, numOfUpvotes }) {
   let [isOptionsActive, setOptions] = useState(false);
 
-  let { userDownvoted, userUpvoted, numOfUpvotes } = state;
+  let { userDownvoted, userUpvoted } = state;
 
   let { upvoteComment, downvoteComment } = functions;
 
@@ -48,7 +48,7 @@ export default function CommentActions({ state, functions }) {
           </span>
         </Tooltip>
 
-        <Tooltip marginLeft="-31px">
+        <Tooltip active={isOptionsActive} text="More" marginLeft="-31px">
           {isOptionsActive && (
             <Menu
               width="100px"

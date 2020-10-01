@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import CommentActions from "./CommentActions";
+import firebase from "firebase";
 import "../../../../styles/homepage/main-content/questions-answers/comments/comment.css";
 
 export default class Comment extends PureComponent {
@@ -8,30 +9,56 @@ export default class Comment extends PureComponent {
     this.state = {
       userDownvoted: false,
       userUpvoted: false,
-      numOfUpvotes: 0,
     };
   }
   upvoteComment = () => {
+    let db = firebase.firestore();
+    let { postID, data } = this.props;
+
     if (!this.state.userUpvoted) {
-      this.setState((state) => ({
+      this.setState({
         userUpvoted: true,
         userDownvoted: false,
-        numOfUpvotes: state.numOfUpvotes + 1,
-      }));
+      });
+
+      db.collection("questions-answers")
+        .doc(postID)
+        .collection("comments")
+        .doc(data.id)
+        .update({
+          upvotes: firebase.firestore.FieldValue.increment(1),
+        });
     } else {
-      this.setState((state) => ({
+      this.setState({
         userUpvoted: false,
-        numOfUpvotes: state.numOfUpvotes - 1,
-      }));
+      });
+
+      db.collection("questions-answers")
+        .doc(postID)
+        .collection("comments")
+        .doc(data.id)
+        .update({
+          upvotes: firebase.firestore.FieldValue.increment(-1),
+        });
     }
   };
   downvoteComment = () => {
+    let db = firebase.firestore();
+    let { postID, data } = this.props;
+
     if (this.state.userUpvoted) {
       this.setState((state) => ({
         userUpvoted: false,
-        numOfUpvotes: state.numOfUpvotes - 1,
         userDownvoted: !state.userDownvoted,
       }));
+
+      db.collection("questions-answers")
+        .doc(postID)
+        .collection("comments")
+        .doc(data.id)
+        .update({
+          upvotes: firebase.firestore.FieldValue.increment(-1),
+        });
     } else {
       this.setState((state) => ({
         userDownvoted: !state.userDownvoted,
@@ -48,6 +75,7 @@ export default class Comment extends PureComponent {
           <p>{data.comment}</p>
           <CommentActions
             state={this.state}
+            numOfUpvotes={data.upvotes}
             functions={{
               upvoteComment: this.upvoteComment,
               downvoteComment: this.downvoteComment,
