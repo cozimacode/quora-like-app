@@ -1,19 +1,46 @@
 import React, { useState, useContext } from "react";
 import { CloseButton, userAvatar, Link } from "../assets";
 import { MainContext } from "../context/MainContext";
+import firebase from "firebase";
+import { v4 as uuid } from "uuid";
 import "../components/styles/question-modal-content.css";
 
 export default function QuestionModalContent() {
   const [activeTab, setActiveTab] = useState("question");
+  const [questionInfo, setQuestionInfo] = useState("");
   const [linkInfo, setLinkInfo] = useState("");
+  const [postError, setPostError] = useState(false);
   const { setModal } = useContext(MainContext);
 
-  const handleChange = (e) => {
-    setLinkInfo(e.target.value);
+  const handleSubmit = () => {
+    if (questionInfo.length > 30) {
+      let db = firebase.firestore();
+      let postID = `qla-${uuid()}`;
+      db.collection("questions-answers").doc(postID).set({
+        type: "question",
+        numOfFollows: 1,
+        id: postID,
+        question: questionInfo,
+      });
+
+      setQuestionInfo("");
+      setModal(false);
+    } else {
+      setPostError(true);
+      setTimeout(() => {
+        setPostError(false);
+      }, 5000);
+    }
   };
 
   return (
     <div className="qla-question-modal-content">
+      {postError && (
+        <p className="qla-question-error">
+          This question needs more detail. Add more information to ask a clear
+          question, written as a complete sentence.
+        </p>
+      )}
       <div className="qla-qmc-header">
         <ul>
           <li
@@ -46,7 +73,11 @@ export default function QuestionModalContent() {
         {activeTab.indexOf("question") > -1 ? (
           <>
             <div className="qla-question-input">
-              <textarea placeholder='Start your question with "What", "How", "Why", etc.' />
+              <textarea
+                onChange={(e) => setQuestionInfo(e.target.value)}
+                value={questionInfo}
+                placeholder='Start your question with "What", "How", "Why", etc.'
+              />
             </div>
             <div className="qla-optional-link">
               <Link />
@@ -60,7 +91,7 @@ export default function QuestionModalContent() {
           <>
             <div className="qla-link-info">
               <textarea
-                onChange={handleChange}
+                onChange={(e) => setLinkInfo(e.target.value)}
                 value={linkInfo}
                 placeholder="Say something about this..."
               />
@@ -76,7 +107,7 @@ export default function QuestionModalContent() {
       <div className="qla-qmc-footer">
         <ul>
           <li>Cancel</li>
-          <li className="qla-qmc-add">
+          <li onClick={handleSubmit} className="qla-qmc-add">
             {activeTab.indexOf("question") > -1 ? "Add Question" : "Share Link"}
           </li>
         </ul>

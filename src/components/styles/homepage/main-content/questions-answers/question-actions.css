@@ -1,0 +1,38 @@
+.qla-recently-asked .qla-actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.qla-recently-asked .qla-actions .qla-action-set-one,
+.qla-recently-asked .qla-actions .qla-action-set-two {
+  display: flex;
+  justify-content: center;
+}
+
+.qla-recently-asked .qla-actions .qla-action-set-one span,
+.qla-recently-asked .qla-actions .qla-action-set-two span {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.qla-recently-asked .qla-actions .qla-action-set-one span {
+  border-radius: 25px;
+}
+
+.qla-recently-asked .qla-actions .qla-action-set-one span svg {
+  margin-right: 5px;
+}
+
+.qla-recently-asked .qla-action-set-one .qla-follow.followed {
+  color: rgb(46, 105, 255);
+}
+
+.qla-recently-asked .qla-action-set-one .qla-follow.followed svg g {
+  stroke: rgb(46, 105, 255);
+}

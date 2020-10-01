@@ -5,6 +5,8 @@ import AnswerHidden from "./AnswerHidden";
 import AnswerDownvoted from "./AnswerDownvoted";
 import AnswerActions from "./AnswerActions";
 import CommentsSection from "./comments/CommentsSection";
+import parse from "html-react-parser";
+import firebase from "firebase";
 import "../../../styles/homepage/main-content/questions-answers/questions-answers.css";
 
 export default class QuestionsAndAnswers extends PureComponent {
@@ -15,25 +17,10 @@ export default class QuestionsAndAnswers extends PureComponent {
       isHidden: false,
       userDownvoted: false,
       userUpvoted: false,
-      numOfUpvotes: 0,
-      numOfShares: 0,
-      numOfComments: 2,
       showComments: false,
+      numOfComments: props.data.comments.length,
     };
   }
-
-  //Will be used once the app is connected to Firebase
-
-  // static getDerivedStateFromProps(props, state) {
-  //   let finalState = {};
-  //   if (props.data.upvotes !== state.numOfUpvotes) {
-  //     finalState.numOfUpvotes = props.data.upvotes;
-  //   }
-  //   if (props.data.shares !== state.numOfShares) {
-  //     finalState.numOfShares = props.data.shares;
-  //   }
-  //   return finalState;
-  // }
 
   showFullPost = () => {
     this.setState({
@@ -47,6 +34,12 @@ export default class QuestionsAndAnswers extends PureComponent {
     }));
   };
 
+  updateCommentCount = (arrayLength) => {
+    this.setState({
+      numOfComments: arrayLength,
+    });
+  };
+
   hideStory = () => {
     this.setState((state) => ({
       isHidden: !state.isHidden,
@@ -54,13 +47,21 @@ export default class QuestionsAndAnswers extends PureComponent {
   };
 
   downvoteAnswer = () => {
+    let db = firebase.firestore();
+    let { id } = this.props.data;
+
     if (this.state.userUpvoted) {
       this.setState((state) => ({
         userUpvoted: false,
         isHidden: false,
-        numOfUpvotes: state.numOfUpvotes - 1,
         userDownvoted: !state.userDownvoted,
       }));
+
+      db.collection("questions-answers")
+        .doc(id)
+        .update({
+          upvotes: firebase.firestore.FieldValue.increment(-1),
+        });
     } else {
       this.setState((state) => ({
         isHidden: false,
@@ -70,21 +71,40 @@ export default class QuestionsAndAnswers extends PureComponent {
   };
 
   upvoteAnswer = () => {
+    let db = firebase.firestore();
+    let { id } = this.props.data;
+
     if (!this.state.userUpvoted) {
-      this.setState((state) => ({
+      this.setState({
         userUpvoted: true,
-        numOfUpvotes: state.numOfUpvotes + 1,
-      }));
+      });
+
+      db.collection("questions-answers")
+        .doc(id)
+        .update({
+          upvotes: firebase.firestore.FieldValue.increment(1),
+        });
     } else {
-      this.setState((state) => ({
+      this.setState({
         userUpvoted: false,
-        numOfUpvotes: state.numOfUpvotes - 1,
-      }));
+      });
+
+      db.collection("questions-answers")
+        .doc(id)
+        .update({
+          upvotes: firebase.firestore.FieldValue.increment(-1),
+        });
     }
   };
 
   render() {
-    let { isExcerpt, isHidden, userDownvoted, showComments } = this.state;
+    let {
+      isExcerpt,
+      isHidden,
+      userDownvoted,
+      showComments,
+      numOfComments,
+    } = this.state;
     let { data } = this.props;
     return (
       <>
@@ -130,10 +150,15 @@ export default class QuestionsAndAnswers extends PureComponent {
                   />
                 </div>
               ) : (
-                <div className="qla-answer">{data.answerMarkup()}</div>
+                <div className="qla-answer">{parse(data.answerMarkup)}</div>
               )}
               <AnswerActions
                 state={this.state}
+                stats={{
+                  numOfUpvotes: data.upvotes,
+                  numOfComments,
+                  numOfShares: data.shares,
+                }}
                 functions={{
                   upvoteAnswer: this.upvoteAnswer,
                   downvoteAnswer: this.downvoteAnswer,
@@ -141,7 +166,13 @@ export default class QuestionsAndAnswers extends PureComponent {
                 }}
               />
             </div>
-            {showComments && <CommentsSection comments={data.comments} />}
+            {showComments && (
+              <CommentsSection
+                postID={data.id}
+                comments={data.comments}
+                updateCommentCount={this.updateCommentCount}
+              />
+            )}
           </>
         )}
       </>

@@ -130,6 +130,7 @@
   border: none;
   font-size: 18px;
   overflow-wrap: break-word;
+  outline: none;
 }
 
 .qla-qmc-content .qla-link-info textarea {
@@ -180,4 +181,17 @@
   width: 100%;
   border: none;
   font-size: 13px;
+}
+
+.qla-question-modal-content .qla-question-error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #5b6770;
+  color: white;
+  padding: 10px;
+  margin: 0;
+  font-size: 15px;
 }

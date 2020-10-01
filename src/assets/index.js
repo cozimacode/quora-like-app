@@ -32,3 +32,5 @@ export { ReactComponent as Twitter } from "./homepage/twitter.svg";
 export { ReactComponent as RightArrow } from "./homepage/right-arrow.svg";
 export { ReactComponent as Link } from "./homepage/link.svg";
 export { ReactComponent as Reply } from "./homepage/reply.svg";
+export { ReactComponent as Follow } from "./homepage/follow.svg";
+export { ReactComponent as Request } from "./homepage/request.svg";

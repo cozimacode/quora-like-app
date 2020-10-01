@@ -1,0 +1,15 @@
+.qla-recently-asked {
+  position: relative;
+  margin-top: 10px;
+}
+
+.qla-recently-asked .qla-topic {
+  display: flex;
+  width: 100%;
+  font-size: 13px;
+  color: #939598;
+}
+
+.qla-recently-asked .qla-question {
+  font-weight: bold;
+}

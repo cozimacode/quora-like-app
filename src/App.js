@@ -3,7 +3,10 @@ import { Header, Homepage, Answer, Spaces, Notifications } from "./components";
 import { Route, Switch } from "react-router-dom";
 import { MainContext } from "./context/MainContext";
 import Modal from "./components/utilities/Modal";
+import firebase from "firebase";
 import "./App.css";
+
+firebase.initializeApp({ projectId: "quora-like-app" });
 
 function App() {
   const { isOverlayActive, isModalActive } = useContext(MainContext);
